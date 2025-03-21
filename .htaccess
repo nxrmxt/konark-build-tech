@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+  
+    # Ensure index.html is served correctly
+    RewriteRule ^index\.html$ - [L]
+  
+    # Redirect all requests to index.html except existing files, directories, or symbolic links
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule . /index.html [L]
+  
+    # Correct MIME type for JPEG images
+    AddType image/jpeg .jpg
+    AddType image/jpeg .jpeg
+  </IfModule>
+  
